@@ -12,7 +12,7 @@ generateBtn = document.querySelector("#generate");
 // Write password to the #password input
 
 function writePassword() {
-var pwConditions = prompts();
+var pwConditions = prompts(); // If the user follows the prompts then it will execute the generatePassword function.
   if (pwConditions){
     generatePassword();
   }
@@ -37,7 +37,7 @@ function prompts() {
     //Answering each with "Ok" will return true and merge the arrays into the open pwArray
    var ucPrompt = confirm("Would you like to include uppercase letters?");
     if (ucPrompt) {
-      pwArray = pwArray.concat(upperCase);
+      pwArray = pwArray.concat(upperCase); //If yes, upperCase added to pwArray
     }
 
   var lcPrompt = confirm("Would you like to include lowercase letters?");
@@ -58,19 +58,12 @@ function prompts() {
 
   function generatePassword() {   // Creates a randomly generated password from the pwArray using a for loop
     password = "";
-    for (i = 0; i < pwLength.length; i++) {
+    for (i = 0; i < pwLength; i++) { // Characters are added to the password until it reaches the desired password length
         var pwCharacters = Math.floor(Math.random() * pwArray.length);
         password = password + pwArray[pwCharacters];
     }
     return password;
   }
-
-  // var password = generatePassword();
-  // var passwordText = document.querySelector("#password");
-
-  // passwordText.value = password;
-
-
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
