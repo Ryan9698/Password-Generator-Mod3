@@ -6,13 +6,12 @@ var symbols = ["!","@","#","$","^","&","*","(",")","/"];
 var pwArray = [];
 var pwLength = 128;
 // Get references to the #generate element
-var 
-generateBtn = document.querySelector("#generate");
+var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 
 function writePassword() {
-var pwConditions = prompts(); // If the user follows the prompts then it will execute the generatePassword function.
+  var pwConditions = prompts(); // If the user follows the prompts then it will execute the generatePassword function.
   if (pwConditions){
     generatePassword();
   }
@@ -40,30 +39,30 @@ function prompts() {
       pwArray = pwArray.concat(upperCase); //If yes, upperCase added to pwArray
     }
 
-  var lcPrompt = confirm("Would you like to include lowercase letters?");
+   var lcPrompt = confirm("Would you like to include lowercase letters?");
     if (lcPrompt) {
     pwArray = pwArray.concat(lowerCase);
     }
-  var numPrompt = confirm("Would you like to use numbers?");
+   var numPrompt = confirm("Would you like to use numbers?");
     if (numPrompt) {
       pwArray = pwArray.concat(numbers);
     }
-  var specPrompt = confirm("Would you like to include special characters? (ex. !@#$)");
+   var specPrompt = confirm("Would you like to include special characters? (ex. !@#$)");
     if (specPrompt) {
       pwArray = pwArray.concat(symbols);
     }
 
-  alert("Thank you! Be sure to save your password somewhere safe! Enjoy!");
-  };
+   alert("Thank you! Be sure to save your password somewhere safe! Enjoy!");
+   };
 
-  function generatePassword() {   // Creates a randomly generated password from the pwArray using a for loop
-    password = "";
-    for (i = 0; i < pwLength; i++) { // Characters are added to the password until it reaches the desired password length
-        var pwCharacters = Math.floor(Math.random() * pwArray.length);
-        password = password + pwArray[pwCharacters];
+function generatePassword() {   // Creates a randomly generated password from the pwArray using a for loop
+  password = "";
+  for (i = 0; i < pwLength; i++) { // Characters are added to the password until it reaches the desired password length
+      var pwCharacters = Math.floor(Math.random() * pwArray.length);
+      password = password + pwArray[pwCharacters];
     }
     return password;
-  }
+  };
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
